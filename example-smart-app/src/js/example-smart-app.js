@@ -72,7 +72,7 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           p.temp = getQuantityValueAndUnit(temps[0]);
 
-          var intolerancesWithReactions = allergies.find(allergy => allergy.reaction)
+          var intolerancesWithReactions = allergies.filter(allergy => allergy.reaction)
           console.log(intolerancesWithReactions)
           var intolerancesToString = intolerancesWithReactions.map(allergy => {
             var allergyName = allergy.code.text
@@ -81,9 +81,9 @@
             return `<tr><th>${allergyName}</th><td>${allergyReaction}</td></tr>`
           })
           console.log(intolerancesToString)
-          var allergyIntolerance = `<table>${intolerancesToString.join('')}</table>`;
-          console.log(allergyIntolerance)
-          p.allergyIntolerance = allergyIntolerance;
+          var allergyIntolerances = `<table>${intolerancesToString.join('')}</table>`;
+          console.log(allergyIntolerances)
+          p.allergyIntolerance = allergyIntolerances;
 
           console.log(p);
 
