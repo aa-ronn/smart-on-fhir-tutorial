@@ -89,6 +89,7 @@
   }
 
   function getBloodPressureValue(BPObservations, typeOfPressure) {
+    console.log(BPObservations);
     var formattedBPObservations = [];
     BPObservations.forEach(function(observation){
       var BP = observation.component.find(function(component){
