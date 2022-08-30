@@ -65,6 +65,8 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           p.temp = getQuantityValueAndUnit(temp[0]);
 
+          console.log(p);
+
           ret.resolve(p);
         });
       } else {
