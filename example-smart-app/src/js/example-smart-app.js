@@ -72,18 +72,17 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           p.temp = getQuantityValueAndUnit(temps[0]);
 
-          var intolerancesWithReactions = allergies.filter(allergy => allergy.reaction)
-          console.log(intolerancesWithReactions)
-          var intolerancesToString = intolerancesWithReactions.map(allergy => {
-            var allergyName = allergy.code.text
-            var allergyReaction = allergy.reaction.map(react => react.manifestation[0].text).join(', ')
-            console.log(`${allergyName}: ${allergyReaction}`)
-            return `<tr><th>${allergyName}</th><td>${allergyReaction}</td></tr>`
+          const intolerancesWithReactions = allergies.filter(allergy => allergy.reaction)
+
+          const intolerancesToTableRow = intolerancesWithReactions.map(allergy => {
+            const allergyName = allergy.code.text
+            const allergyReaction = allergy.reaction.map(react => react.manifestation[0].text).join(', ')
+            const allergySeverity = allergy.reaction.map(react => react.severity).join(', ')
+            return `<tr><th>${allergyName}</th><td>${allergyReaction}</td><td>${allergySeverity}</td></tr>`
           })
-          console.log(intolerancesToString)
-          var allergyIntolerances = `<table>${intolerancesToString.join('')}</table>`;
-          console.log(allergyIntolerances)
-          p.allergyIntolerance = allergyIntolerances;
+
+          const intolerancesToTable = `<table>${intolerancesToTableRow.join('')}</table>`;
+          p.allergyIntolerance = intolerancesToTable;
 
           console.log(p);
 
